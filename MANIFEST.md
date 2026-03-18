@@ -116,13 +116,13 @@ projects/synthesis/
 | Phase | Status | Started | Completed | Notes |
 |-------|--------|---------|-----------|-------|
 | P0 | ✅ Complete | 2026-03-18 17:36 | 2026-03-18 17:50 | Scaffold done, forge+npm build clean |
-| P1 | ⏳ Pending | — | — | Prompt ready (6.3KB) |
-| P2 | ⏳ Pending | — | — | Prompt ready (6.3KB) |
-| P3 | ⏳ Pending | — | — | Prompt ready (5.1KB) |
-| P4 | ⏳ Pending | — | — | Prompt ready (9.5KB) |
-| P5 | ⏳ Pending | — | — | Prompt ready (13.3KB) |
-| P6 | ⏳ Pending | — | — | Prompt ready (12.9KB) |
-| P7 | ⏳ Pending | — | — | Prompt ready (11.6KB) |
+| P1 | ✅ Complete | 2026-03-18 17:50 | 2026-03-18 17:55 | Contracts: AgentRegistry + JobEscrow, forge build clean |
+| P2 | ✅ Complete | 2026-03-18 17:50 | 2026-03-18 18:00 | Frontend: components, mock data, all pages, npm build clean |
+| P3 | ⏳ Pending | — | — | Integration: ABIs, real hooks, EAS |
+| P4 | ⏳ Pending | — | — | Testing: Foundry tests |
+| P5 | ⏳ Pending | — | — | Documentation |
+| P6 | ⏳ Pending | — | — | Deploy + cleanup |
+| P7 | — | — | — | Merged into P6 |
 
 **Status key:** ⏳ Pending | 🔄 In Progress | ✅ Complete | ❌ Failed | 🔁 Redo
 

@@ -1,6 +1,12 @@
 // EAS (Ethereum Attestation Service) helpers
 // Stub implementation returning mock attestations for development
 
+export type ReputationAttestation = {
+	score: number;
+	attestationCount: number;
+	lastUpdated: number;
+};
+
 export interface EASAttestation {
 	uid: string;
 	schema: string;
@@ -56,21 +62,29 @@ const mockAttestations: Map<string, EASAttestation> = new Map([
 
 /**
  * Get reputation score from EAS attestations
- * Returns a mock reputation score for development
+ * Returns a mock ReputationAttestation object for development
  */
-export async function getReputationFromEAS(agentAddress: string): Promise<number> {
+export async function getReputationFromEAS(agentAddress: string): Promise<ReputationAttestation> {
 	// Simulate async delay
 	await new Promise(resolve => setTimeout(resolve, 100));
 	
 	const attestation = mockAttestations.get(agentAddress.toLowerCase());
 	if (attestation) {
-		return attestation.data.reputationScore;
+		return {
+			score: attestation.data.reputationScore,
+			attestationCount: 1,
+			lastUpdated: attestation.time
+		};
 	}
 	
 	// Return default reputation for unknown agents
 	// Based on address hash for variety
 	const hash = agentAddress.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-	return 50 + (hash % 40); // Returns 50-89 range
+	return {
+		score: 50 + (hash % 40), // Returns 50-89 range
+		attestationCount: 0,
+		lastUpdated: Math.floor(Date.now() / 1000)
+	};
 }
 
 /**

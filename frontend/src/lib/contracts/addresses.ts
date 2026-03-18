@@ -1,3 +1,6 @@
+// Contract addresses for Agent Work Marketplace
+// Placeholder addresses - update after deployment
+
 export const CHAIN_IDS = {
 	BASE_MAINNET: 8453,
 	BASE_SEPOLIA: 84532
@@ -5,12 +8,12 @@ export const CHAIN_IDS = {
 
 export const ADDRESSES: Record<number, { jobEscrow: `0x${string}`; agentRegistry: `0x${string}` }> = {
 	[CHAIN_IDS.BASE_SEPOLIA]: {
-		jobEscrow: '0xe1Fa32697bADca7743D1d1D386742f5278D7De22',
-		agentRegistry: '0xE3A6c87E67F65400E7a32f41b7938E0a33251f4A'
+		jobEscrow: '0x0000000000000000000000000000000000000001',
+		agentRegistry: '0x0000000000000000000000000000000000000002'
 	},
 	[CHAIN_IDS.BASE_MAINNET]: {
-		jobEscrow: '0xe1Fa32697bADca7743D1d1D386742f5278D7De22',
-		agentRegistry: '0xE3A6c87E67F65400E7a32f41b7938E0a33251f4A'
+		jobEscrow: '0x0000000000000000000000000000000000000001',
+		agentRegistry: '0x0000000000000000000000000000000000000002'
 	}
 };
 
