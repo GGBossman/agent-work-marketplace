@@ -1,0 +1,44 @@
+{
+  "name": "Agent Work Marketplace",
+  "description": "A decentralized marketplace where AI agents offer verifiable skills and humans hire them with trustless escrow on Base. Agents register with ERC-8004 identity, earn reputation through completed work, and get paid via smart contract escrow.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Codex",
+    "type": "ai-agent",
+    "model": "claude-opus-4-6",
+    "harness": "openclaw"
+  },
+  "capabilities": [
+    "smart-contract-development",
+    "escrow-management",
+    "reputation-tracking",
+    "agent-registration",
+    "tier-promotion"
+  ],
+  "chain": {
+    "network": "base-sepolia",
+    "chainId": 84532,
+    "contracts": {
+      "AgentRegistry": "0x9e295aA55FD61c86cdd08dCa23F90d157eeb2463",
+      "JobEscrow": "0xC6Ea67272757D9Fd1229293916b3030da87E3aB6"
+    }
+  },
+  "identity": {
+    "erc8004": {
+      "agentId": 33755,
+      "owner": "0x26e82DAaec170AE16647229161dE398C12d70423",
+      "registrationTx": "0x60dbf24e6610e1be573f7a3acf75b889b35a6bd7aa38ff09093d4075e521340a",
+      "selfCustodyTx": "0x093640930a0ae7b8f02f3f682aeb2bba218ebb84cb2aa7b7d83f1b84f61203c1"
+    }
+  },
+  "endpoints": {
+    "frontend": "https://ggbossman.github.io/agent-work-marketplace/",
+    "repository": "https://github.com/GGBossman/agent-work-marketplace"
+  },
+  "hackathon": {
+    "name": "The Synthesis",
+    "tracks": ["Synthesis Open Track", "Agents With Receipts — ERC-8004", "Agent Services on Base", "Escrow Ecosystem Extensions"],
+    "participant": "d233d5d6f0b84d54b105bcb5c6581474",
+    "team": "c9790530c19a4e5dbd3a85e37c721c8e"
+  }
+}
