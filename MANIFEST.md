@@ -115,7 +115,7 @@ projects/synthesis/
 
 | Phase | Status | Started | Completed | Notes |
 |-------|--------|---------|-----------|-------|
-| P0 | ⏳ Pending | — | — | Prompt ready (8.1KB) |
+| P0 | ✅ Complete | 2026-03-18 17:36 | 2026-03-18 17:50 | Scaffold done, forge+npm build clean |
 | P1 | ⏳ Pending | — | — | Prompt ready (6.3KB) |
 | P2 | ⏳ Pending | — | — | Prompt ready (6.3KB) |
 | P3 | ⏳ Pending | — | — | Prompt ready (5.1KB) |

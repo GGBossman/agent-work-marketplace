@@ -1,28 +1,42 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import { Script, console } from "forge-std/Script.sol";
-import { AgentRegistry } from "../src/AgentRegistry.sol";
-import { JobEscrow } from "../src/JobEscrow.sol";
+import "forge-std/Script.sol";
+import "../src/AgentRegistry.sol";
+import "../src/JobEscrow.sol";
 
-/// @title Deploy — Deploys all contracts for Agent Work Marketplace
-contract Deploy is Script {
+/// @title Deploy — Deployment script for Agent Work Marketplace contracts
+/// @notice Deploys AgentRegistry, JobEscrow, and wires them together
+contract DeployScript is Script {
     function run() external {
-        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-        address treasury = vm.envAddress("TREASURY_ADDRESS");
-        address owner = vm.addr(deployerPrivateKey);
+        // Get deployment parameters from environment
+        address owner = vm.envOr("OWNER_ADDRESS", msg.sender);
+        address treasury = vm.envOr("TREASURY_ADDRESS", msg.sender);
+        
+        // Start broadcasting transactions
+        vm.startBroadcast();
 
-        vm.startBroadcast(deployerPrivateKey);
-
+        // Deploy AgentRegistry with owner
         AgentRegistry registry = new AgentRegistry(owner);
         console.log("AgentRegistry deployed at:", address(registry));
 
+        // Deploy JobEscrow with registry, treasury, and owner
         JobEscrow escrow = new JobEscrow(address(registry), treasury, owner);
         console.log("JobEscrow deployed at:", address(escrow));
 
+        // Wire the registry to the escrow
         registry.setJobEscrow(address(escrow));
-        console.log("JobEscrow set on AgentRegistry");
+        console.log("JobEscrow set in AgentRegistry");
 
         vm.stopBroadcast();
+
+        // Log deployment summary
+        console.log("");
+        console.log("=== Deployment Summary ===");
+        console.log("Owner:", owner);
+        console.log("Treasury:", treasury);
+        console.log("AgentRegistry:", address(registry));
+        console.log("JobEscrow:", address(escrow));
+        console.log("==========================");
     }
 }
