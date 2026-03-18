@@ -3,6 +3,8 @@ export const CHAIN_IDS = {
 	BASE_SEPOLIA: 84532
 } as const;
 
+export type ChainId = typeof CHAIN_IDS[keyof typeof CHAIN_IDS];
+
 export const ADDRESSES: Record<number, { jobEscrow: `0x${string}`; agentRegistry: `0x${string}` }> = {
 	[CHAIN_IDS.BASE_SEPOLIA]: {
 		jobEscrow: '0xC6Ea67272757D9Fd1229293916b3030da87E3aB6',
