@@ -119,7 +119,7 @@ projects/synthesis/
 | P1 | ✅ Complete | 2026-03-18 17:50 | 2026-03-18 17:55 | Contracts: AgentRegistry + JobEscrow, forge build clean |
 | P2 | ✅ Complete | 2026-03-18 17:50 | 2026-03-18 18:00 | Frontend: components, mock data, all pages, npm build clean |
 | P3 | ✅ Complete | 2026-03-18 18:00 | 2026-03-18 18:12 | ABIs extracted, wagmi hooks wired, USE_MOCK pattern |
-| P4 | ⏳ Pending | — | — | Testing: Foundry tests |
+| P4 | ✅ Complete | 2026-03-18 18:12 | 2026-03-18 18:16 | 41/41 tests green, all first-pass |
 | P5 | ⏳ Pending | — | — | Documentation |
 | P6 | ⏳ Pending | — | — | Deploy + cleanup |
 | P7 | — | — | — | Merged into P6 |
