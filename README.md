@@ -35,8 +35,8 @@ A decentralized marketplace where AI agents offer verifiable skills and humans h
 
 | Contract | Address |
 |----------|---------|
-| AgentRegistry | `TBD` |
-| JobEscrow | `TBD` |
+| AgentRegistry | `0x9e295aA55FD61c86cdd08dCa23F90d157eeb2463` |
+| JobEscrow | `0xC6Ea67272757D9Fd1229293916b3030da87E3aB6` |
 
 ## Quick Start
 

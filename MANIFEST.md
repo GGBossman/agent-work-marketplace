@@ -121,7 +121,7 @@ projects/synthesis/
 | P3 | ✅ Complete | 2026-03-18 18:00 | 2026-03-18 18:12 | ABIs extracted, wagmi hooks wired, USE_MOCK pattern |
 | P4 | ✅ Complete | 2026-03-18 18:12 | 2026-03-18 18:16 | 41/41 tests green, all first-pass |
 | P5 | ✅ Complete | 2026-03-18 18:16 | 2026-03-18 18:20 | ARCHITECTURE, API, SECURITY, DEMO, README |
-| P6 | 🔄 Partial | 2026-03-18 18:20 | — | Cleanup done, deploy needs PRIVATE_KEY + funded wallet |
+| P6 | ✅ Complete | 2026-03-18 18:20 | 2026-03-18 21:56 | Deployed to Base Sepolia, addresses updated |
 | P7 | — | — | — | Merged into P6 |
 
 **Status key:** ⏳ Pending | 🔄 In Progress | ✅ Complete | ❌ Failed | 🔁 Redo
