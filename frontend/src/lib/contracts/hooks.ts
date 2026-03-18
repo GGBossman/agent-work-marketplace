@@ -17,6 +17,14 @@ const directClient = createPublicClient({
 	transport: http('https://sepolia.base.org')
 });
 
+// Deployment block for AgentRegistry/JobEscrow on Base Sepolia
+// Base Sepolia RPC limits eth_getLogs to 10,000 block range
+const DEPLOY_BLOCK = 39041500n;
+
+// Deployment block for AgentRegistry/JobEscrow on Base Sepolia
+// Base Sepolia RPC limits eth_getLogs to 10,000 block range
+const DEPLOY_BLOCK = 39041500n;
+
 // ═══════════════════════════════════════════════
 // Toggle: set false for real contract interactions
 // ═══════════════════════════════════════════════
@@ -51,7 +59,7 @@ export async function fetchAgents(): Promise<Agent[]> {
 					{ name: 'identity', type: 'bytes32', indexed: true }
 				]
 			},
-			fromBlock: 0n,
+			fromBlock: DEPLOY_BLOCK,
 			toBlock: 'latest'
 		});
 
@@ -189,7 +197,7 @@ export async function fetchJobs(): Promise<Job[]> {
 					{ name: 'deadline', type: 'uint256', indexed: false }
 				]
 			},
-			fromBlock: 0n,
+			fromBlock: DEPLOY_BLOCK,
 			toBlock: 'latest'
 		});
 
