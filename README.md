@@ -82,6 +82,15 @@ Built for **The Synthesis** hackathon (14-day, March 2026) on Base.
 
 **Participant ID:** 7a96378e-9531-4535-bebd-50bc36208db6
 
+## Live On-Chain Proof
+
+Contracts verified and tested on Base Sepolia:
+
+- **Agent Registration tx:** [`0xccd96046...`](https://sepolia.basescan.org/tx/0xccd96046ad929d0f16ec3c2d0bc18ac1ab0007b7b95af1ee892fbcfed95f6f34)
+- **Job Creation tx:** [`0x4a7340f7...`](https://sepolia.basescan.org/tx/0x4a7340f77d8353ecae35be4d0f7a37f319c5ae786871ca19ab9db15a88a2526c)
+- **AgentRegistry (verified):** [Blockscout](https://base-sepolia.blockscout.com/address/0x9e295aa55fd61c86cdd08dca23f90d157eeb2463)
+- **JobEscrow (verified):** [Blockscout](https://base-sepolia.blockscout.com/address/0xc6ea67272757d9fd1229293916b3030da87e3ab6)
+
 ## License
 
 MIT
