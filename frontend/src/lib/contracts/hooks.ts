@@ -19,11 +19,8 @@ const directClient = createPublicClient({
 
 // Deployment block for AgentRegistry/JobEscrow on Base Sepolia
 // Base Sepolia RPC limits eth_getLogs to 10,000 block range
-const DEPLOY_BLOCK = 39041500n;
-
-// Deployment block for AgentRegistry/JobEscrow on Base Sepolia
-// Base Sepolia RPC limits eth_getLogs to 10,000 block range
-const DEPLOY_BLOCK = 39041500n;
+// Agent registered at block 39037432, contracts deployed around 39041500
+const DEPLOY_BLOCK = 39037000n;
 
 // ═══════════════════════════════════════════════
 // Toggle: set false for real contract interactions
