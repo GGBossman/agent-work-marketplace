@@ -1,8 +1,8 @@
 # MANIFEST.md — Source of Truth
 ## Agent Work Marketplace (The Synthesis Hackathon)
 
-**Last Updated:** 2026-03-18T17:00+08:00  
-**Version:** 2.0  
+**Last Updated:** 2026-03-18T23:10+08:00  
+**Version:** 3.0  
 **Team:** Codex (Agent) + Stephen Cheung (Human)  
 **Hackathon:** The Synthesis (14-day, starts March 13)  
 **Chain:** Base Mainnet  
@@ -197,7 +197,18 @@ EXPERT_MIN_PRICE = 0.08 ether
 - **Participant ID:** 7a96378e-9531-4535-bebd-50bc36208db6
 - **Team ID:** e371bbbe-c76e-4349-a304-6cb6329fa8d4
 - **API Key:** sk-synth-f7793212feb1f001f3f15ea18ee73c93fd89475058b10404
-- **Registration Tx:** https://basescan.org/tx/0x7f261f0a656f97c49df7c75aee778cc10f072a1965a96ceb6cccceb6319cc8a9
+- **Registration Tx (old):** https://basescan.org/tx/0x7f261f0a656f97c49df7c75aee778cc10f072a1965a96ceb6cccceb6319cc8a9
+- **Registration Tx (Devfolio):** https://basescan.org/tx/0x60dbf24e6610e1be573f7a3acf75b889b35a6bd7aa38ff09093d4075e521340a
+- **New API Key:** sk-synth-e786d6f5e04441c262969b96b1efa6baecb90d94d6cee2bb
+- **New Participant ID:** d233d5d6f0b84d54b105bcb5c6581474
+- **New Team ID:** c9790530c19a4e5dbd3a85e37c721c8e
+- **Team Invite Code:** c5e4603f5886
+- **Project UUID:** 3b80ef7a53c541d8967270d31fb5629b
+- **Project Slug:** agent-work-marketplace-28c1
+- **Project Status:** published
+- **Self-Custody:** ✅ (tx: 0x093640930a0ae7b8f02f3f682aeb2bba218ebb84cb2aa7b7d83f1b84f61203c1)
+- **ERC-8004 Agent ID:** 33755
+- **Owner Wallet:** 0x26e82DAaec170AE16647229161dE398C12d70423
 
 ---
 
@@ -260,6 +271,12 @@ At project completion, the workspace should contain ONLY:
 | 2026-03-18 | 8 phases → 6 phases | Merged P1+P2 (no ReputationEngine), tighter execution |
 | 2026-03-18 | ReentrancyGuard → ReentrancyGuardTransient | OZ v5.6, EIP-1153 transient storage, ~10K less gas |
 | 2026-03-18 | EXECUTION_PROMPT.md created | Full autonomous build prompt for zero-to-production |
+| 2026-03-18 | Full build executed | P0-P6 complete in ~45 min, 41/41 tests, deployed to Base Sepolia |
+| 2026-03-18 | Contracts verified | Both on Blockscout (base-sepolia.blockscout.com) |
+| 2026-03-18 | Re-registered on Devfolio | Old API key invalid, new registration with ERC-8004 agent #33755 |
+| 2026-03-18 | Project published | Submitted to 5 tracks, self-custody completed |
+| 2026-03-18 | GitHub Pages deployed | base path /agent-work-marketplace, svelte.config needs base path |
+| 2026-03-18 | GitHub repo | https://github.com/GGBossman/agent-work-marketplace |
 
 ---
 
