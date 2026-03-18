@@ -8,7 +8,14 @@ import { notify } from '$lib/stores/notifications.svelte';
 import { JOB_ESCROW_ABI, AGENT_REGISTRY_ABI } from './abis';
 import { getAddresses, CHAIN_IDS } from './addresses';
 import { config } from './config';
-import { parseEventLogs, formatEther } from 'viem';
+import { createPublicClient, http, parseEventLogs, formatEther } from 'viem';
+import { baseSepolia } from 'viem/chains';
+
+// Direct public client for reads — doesn't depend on WalletConnect relay
+const directClient = createPublicClient({
+	chain: baseSepolia,
+	transport: http('https://sepolia.base.org')
+});
 
 // ═══════════════════════════════════════════════
 // Toggle: set false for real contract interactions
@@ -31,16 +38,10 @@ export async function fetchAgents(): Promise<Agent[]> {
 	if (USE_MOCK) return getMockAgents();
 
 	try {
-		const client = getPublicClient(config, { chainId: DEFAULT_CHAIN_ID });
-		if (!client) {
-			console.warn('No public client available, falling back to mock');
-			return getMockAgents();
-		}
-
 		const addresses = getAddresses(DEFAULT_CHAIN_ID);
 
-		// Query AgentRegistered events from genesis
-		const logs = await client.getLogs({
+		// Query AgentRegistered events from genesis using direct client
+		const logs = await directClient.getLogs({
 			address: addresses.agentRegistry,
 			event: {
 				type: 'event',
@@ -173,16 +174,10 @@ export async function fetchJobs(): Promise<Job[]> {
 	if (USE_MOCK) return getMockJobs();
 
 	try {
-		const client = getPublicClient(config, { chainId: DEFAULT_CHAIN_ID });
-		if (!client) {
-			console.warn('No public client, falling back to mock');
-			return getMockJobs();
-		}
-
 		const addresses = getAddresses(DEFAULT_CHAIN_ID);
 
-		// Query JobCreated events
-		const logs = await client.getLogs({
+		// Query JobCreated events using direct client
+		const logs = await directClient.getLogs({
 			address: addresses.jobEscrow,
 			event: {
 				type: 'event',
