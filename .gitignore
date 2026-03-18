@@ -1,0 +1,7 @@
+node_modules/
+build/
+.svelte-kit/
+contracts/out/
+contracts/cache/
+.env
+.env.local
