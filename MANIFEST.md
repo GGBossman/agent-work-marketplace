@@ -118,7 +118,7 @@ projects/synthesis/
 | P0 | ✅ Complete | 2026-03-18 17:36 | 2026-03-18 17:50 | Scaffold done, forge+npm build clean |
 | P1 | ✅ Complete | 2026-03-18 17:50 | 2026-03-18 17:55 | Contracts: AgentRegistry + JobEscrow, forge build clean |
 | P2 | ✅ Complete | 2026-03-18 17:50 | 2026-03-18 18:00 | Frontend: components, mock data, all pages, npm build clean |
-| P3 | ⏳ Pending | — | — | Integration: ABIs, real hooks, EAS |
+| P3 | ✅ Complete | 2026-03-18 18:00 | 2026-03-18 18:12 | ABIs extracted, wagmi hooks wired, USE_MOCK pattern |
 | P4 | ⏳ Pending | — | — | Testing: Foundry tests |
 | P5 | ⏳ Pending | — | — | Documentation |
 | P6 | ⏳ Pending | — | — | Deploy + cleanup |
