@@ -28,6 +28,8 @@ interface IJobEscrow {
     event DeliveryConfirmed(bytes32 indexed jobId, uint256 agentPayout, uint256 platformFee);
     event AutoReleaseTriggered(bytes32 indexed jobId, uint256 agentPayout, bool fullRelease);
     event DisputeFiled(bytes32 indexed jobId, address indexed initiator);
+    event DisputeResolved(bytes32 indexed jobId, uint256 buyerAmount, uint256 agentAmount);
+    event DeadlineExpired(bytes32 indexed jobId, uint256 refundAmount);
     event JobCancelled(bytes32 indexed jobId);
 
     function createJob(string calldata taskDescription, uint256 deadline) external payable returns (bytes32 jobId);
@@ -37,6 +39,8 @@ interface IJobEscrow {
     function confirmDelivery(bytes32 jobId) external;
     function initiateAutoRelease(bytes32 jobId) external;
     function fileDispute(bytes32 jobId) external payable;
+    function resolveDispute(bytes32 jobId, uint256 buyerPct) external;
+    function claimDeadlineExpiry(bytes32 jobId) external;
     function cancelJob(bytes32 jobId) external;
     function getJob(bytes32 jobId) external view returns (Job memory);
 }

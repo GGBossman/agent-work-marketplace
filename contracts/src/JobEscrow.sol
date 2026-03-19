@@ -227,6 +227,74 @@ contract JobEscrow is IJobEscrow, ReentrancyGuardTransient, Ownable {
         emit DisputeFiled(jobId, msg.sender);
     }
 
+    /// @notice Owner resolves a disputed job by splitting funds
+    /// @param jobId The ID of the disputed job
+    /// @param buyerPct Percentage (0-100) of escrow to return to buyer; remainder goes to agent
+    /// @dev Only the contract owner can resolve disputes. Agent stake is returned to agent.
+    ///      Dispute stake (0.01 ETH) goes to treasury.
+    function resolveDispute(bytes32 jobId, uint256 buyerPct) external nonReentrant jobExists(jobId) onlyOwner {
+        Job storage job = _jobs[jobId];
+        require(job.status == JobStatus.Disputed, "JobEscrow: job not disputed");
+        require(buyerPct <= 100, "JobEscrow: invalid percentage");
+
+        uint256 totalEscrow = job.escrowAmount;
+        uint256 buyerAmount = (totalEscrow * buyerPct) / 100;
+        uint256 agentAmount = totalEscrow - buyerAmount;
+
+        job.status = JobStatus.Complete;
+
+        // Record as disputed completion for agent stats
+        agentRegistry.recordJobCompletion(job.agent, true);
+        agentRegistry.decrementActiveJobs(job.agent);
+
+        // Return agent stake to agent (separate from escrow split)
+        uint256 agentTotal = agentAmount + job.stakeAmount;
+
+        if (buyerAmount > 0) {
+            (bool successBuyer, ) = payable(job.buyer).call{value: buyerAmount}("");
+            require(successBuyer, "JobEscrow: buyer payment failed");
+        }
+
+        if (agentTotal > 0) {
+            (bool successAgent, ) = payable(job.agent).call{value: agentTotal}("");
+            require(successAgent, "JobEscrow: agent payment failed");
+        }
+
+        // Dispute stake goes to treasury (covers arbitration cost)
+        (bool successTreasury, ) = payable(treasury).call{value: Constants.DISPUTE_STAKE}("");
+        require(successTreasury, "JobEscrow: treasury payment failed");
+
+        emit DisputeResolved(jobId, buyerAmount, agentAmount);
+    }
+
+    /// @notice Claim refund when deadline expires and agent hasn't delivered
+    /// @param jobId The ID of the expired job
+    /// @dev Callable by buyer when job is InProgress and past deadline.
+    ///      Agent loses their stake (goes to treasury as penalty).
+    function claimDeadlineExpiry(bytes32 jobId) external nonReentrant jobExists(jobId) onlyBuyer(jobId) {
+        Job storage job = _jobs[jobId];
+        require(job.status == JobStatus.InProgress, "JobEscrow: job not in progress");
+        require(block.timestamp > job.deadline, "JobEscrow: deadline not yet passed");
+
+        job.status = JobStatus.Cancelled;
+
+        // Record as disputed (penalty) for agent stats
+        agentRegistry.recordJobCompletion(job.agent, true);
+        agentRegistry.decrementActiveJobs(job.agent);
+
+        // Refund full escrow to buyer
+        (bool successBuyer, ) = payable(job.buyer).call{value: job.escrowAmount}("");
+        require(successBuyer, "JobEscrow: refund failed");
+
+        // Agent stake goes to treasury as penalty for not delivering
+        if (job.stakeAmount > 0) {
+            (bool successTreasury, ) = payable(treasury).call{value: job.stakeAmount}("");
+            require(successTreasury, "JobEscrow: treasury payment failed");
+        }
+
+        emit DeadlineExpired(jobId, job.escrowAmount);
+    }
+
     /// @notice Cancel an open or assigned job
     /// @param jobId The ID of the job to cancel
     /// @dev Only the buyer can cancel; refunds escrow and decrements active jobs if assigned

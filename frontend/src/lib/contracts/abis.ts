@@ -430,6 +430,44 @@ export const JOB_ESCROW_ABI = [
 	},
 	{
 		type: "event",
+		name: "DisputeResolved",
+		inputs: [
+			{ name: "jobId", type: "bytes32", indexed: true, internalType: "bytes32" },
+			{ name: "buyerAmount", type: "uint256", indexed: false, internalType: "uint256" },
+			{ name: "agentAmount", type: "uint256", indexed: false, internalType: "uint256" }
+		],
+		anonymous: false
+	},
+	{
+		type: "event",
+		name: "DeadlineExpired",
+		inputs: [
+			{ name: "jobId", type: "bytes32", indexed: true, internalType: "bytes32" },
+			{ name: "refundAmount", type: "uint256", indexed: false, internalType: "uint256" }
+		],
+		anonymous: false
+	},
+	{
+		type: "function",
+		name: "resolveDispute",
+		inputs: [
+			{ name: "jobId", type: "bytes32", internalType: "bytes32" },
+			{ name: "buyerPct", type: "uint256", internalType: "uint256" }
+		],
+		outputs: [],
+		stateMutability: "nonpayable"
+	},
+	{
+		type: "function",
+		name: "claimDeadlineExpiry",
+		inputs: [
+			{ name: "jobId", type: "bytes32", internalType: "bytes32" }
+		],
+		outputs: [],
+		stateMutability: "nonpayable"
+	},
+	{
+		type: "event",
 		name: "JobCancelled",
 		inputs: [
 			{
