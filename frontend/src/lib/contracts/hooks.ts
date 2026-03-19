@@ -12,15 +12,35 @@ import { createPublicClient, http, parseEventLogs, formatEther } from 'viem';
 import { baseSepolia } from 'viem/chains';
 
 // Direct public client for reads — doesn't depend on WalletConnect relay
+// publicnode has no CORS issues and supports chunked getLogs
 const directClient = createPublicClient({
 	chain: baseSepolia,
-	transport: http('https://sepolia.base.org')
+	transport: http('https://base-sepolia-rpc.publicnode.com')
 });
 
 // Deployment block for AgentRegistry/JobEscrow on Base Sepolia
-// Base Sepolia RPC limits eth_getLogs to 10,000 block range
 // Agent registered at block 39037432, contracts deployed around 39041500
 const DEPLOY_BLOCK = 39037000n;
+
+// Max blocks per getLogs call (publicnode supports up to ~10k)
+const LOG_CHUNK_SIZE = 5000n;
+
+// Chunked getLogs — splits large ranges to avoid RPC limits
+async function getLogsChunked(params: Parameters<typeof directClient.getLogs>[0]): Promise<Awaited<ReturnType<typeof directClient.getLogs>>> {
+	const fromBlock = (params.fromBlock as bigint) ?? DEPLOY_BLOCK;
+	const latest = await directClient.getBlockNumber();
+	const toBlock = params.toBlock === 'latest' ? latest : (params.toBlock as bigint) ?? latest;
+
+	const allLogs: Awaited<ReturnType<typeof directClient.getLogs>> = [];
+	let start = fromBlock;
+	while (start <= toBlock) {
+		const end = start + LOG_CHUNK_SIZE - 1n < toBlock ? start + LOG_CHUNK_SIZE - 1n : toBlock;
+		const chunk = await directClient.getLogs({ ...params, fromBlock: start, toBlock: end });
+		allLogs.push(...chunk);
+		start = end + 1n;
+	}
+	return allLogs;
+}
 
 // ═══════════════════════════════════════════════
 // Toggle: set false for real contract interactions
@@ -45,8 +65,8 @@ export async function fetchAgents(): Promise<Agent[]> {
 	try {
 		const addresses = getAddresses(DEFAULT_CHAIN_ID);
 
-		// Query AgentRegistered events from genesis using direct client
-		const logs = await directClient.getLogs({
+		// Query AgentRegistered events — chunked to respect RPC block range limits
+		const logs = await getLogsChunked({
 			address: addresses.agentRegistry,
 			event: {
 				type: 'event',
@@ -181,8 +201,8 @@ export async function fetchJobs(): Promise<Job[]> {
 	try {
 		const addresses = getAddresses(DEFAULT_CHAIN_ID);
 
-		// Query JobCreated events using direct client
-		const logs = await directClient.getLogs({
+		// Query JobCreated events — chunked to respect RPC block range limits
+		const logs = await getLogsChunked({
 			address: addresses.jobEscrow,
 			event: {
 				type: 'event',
