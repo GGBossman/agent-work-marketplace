@@ -172,3 +172,26 @@ Immutable contracts. Acceptable for hackathon.
 6. **Demo video** — Record 5-min walkthrough
 
 **End of Audit**
+
+---
+
+## Status Update (2026-03-19)
+
+### Fixed Since Initial Audit
+
+| Finding | Status | Fix |
+|---------|--------|-----|
+| C-1: USE_MOCK = true | ✅ FIXED | Set to false, all reads/writes use real contracts |
+| C-2: acceptJob missing stake | ✅ FIXED | Calculates 10% stake from escrowAmount |
+| C-3: Event signature placeholder | ✅ FIXED | Proper event-based log fetching via viem |
+| C-4: createJob event parsing | ✅ FIXED | Uses parseEventLogs from viem |
+| H-1: fileDispute missing value | ✅ FIXED | Sends 0.01 ETH dispute stake |
+| H-2: Dashboard mock-only | ✅ FIXED | Real wallet-filtered data from chain |
+| H-3: No toast/feedback | ✅ FIXED | TxToast with Blockscout links |
+| H-4: Direct RPC for reads | ✅ FIXED | Using publicnode.com with chunked getLogs |
+| H-5: GitHub Pages SPA routing | ✅ FIXED | 404.html = index.html, {base} prefix on all hrefs |
+
+### Remaining (Low Priority)
+- Partial auto-release stake zeroing (contract-level, low severity)
+- No on-chain dispute resolution function (post-hackathon)
+- Block timestamp dependence (negligible for job deadlines)
