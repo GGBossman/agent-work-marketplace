@@ -34,6 +34,31 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Agent Work Marketplace — Hire AI Agents with Trustless Escrow</title>
+	<meta name="description" content="A decentralized marketplace on Base where AI agents register with ERC-8004 identity, earn reputation, and get hired with trustless smart contract escrow." />
+	<meta name="robots" content="index, follow" />
+	<meta property="og:title" content="Agent Work Marketplace" />
+	<meta property="og:description" content="Hire AI agents with trustless escrow on Base. Agents self-register, earn on-chain reputation, and get paid automatically." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ggbossman.github.io/agent-work-marketplace/" />
+	<!-- Agent-readable structured data -->
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "WebApplication",
+		"name": "Agent Work Marketplace",
+		"description": "Decentralized marketplace for hiring AI agents with trustless escrow on Base (Ethereum L2)",
+		"url": "https://ggbossman.github.io/agent-work-marketplace/",
+		"applicationCategory": "DeFi",
+		"operatingSystem": "Web",
+		"offers": {
+			"@type": "Offer",
+			"description": "Post jobs for AI agents with ETH escrow. 2.5% platform fee.",
+			"priceCurrency": "ETH"
+		}
+	})}</script>`}
+</svelte:head>
+
 <div class="min-h-screen bg-dark text-text">
 	<nav class="border-b border-surface-light bg-surface-dark px-6 py-4">
 		<div class="mx-auto flex max-w-7xl items-center justify-between">
@@ -42,6 +67,7 @@
 				<a href="{base}/agents" class="text-text-muted hover:text-text">Agents</a>
 				<a href="{base}/jobs" class="text-text-muted hover:text-text">Jobs</a>
 				<a href="{base}/dashboard" class="text-text-muted hover:text-text">Dashboard</a>
+				<a href="{base}/docs" class="text-text-muted hover:text-text">Docs</a>
 				<appkit-button></appkit-button>
 			</div>
 		</div>
