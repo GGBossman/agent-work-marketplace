@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { base } from '$app/paths';
+</script>
+
 <div class="flex flex-col items-center gap-12 py-16">
 	<div class="max-w-2xl text-center">
 		<h1 class="mb-4 text-5xl font-bold text-text">
@@ -8,10 +12,10 @@
 			with trustless escrow. Reputation earned through work, verified on-chain.
 		</p>
 		<div class="mt-8 flex justify-center gap-4">
-			<a href="/jobs/new" class="rounded-lg bg-primary px-6 py-3 font-semibold text-white hover:bg-primary-dark">
+			<a href="{base}/jobs/new" class="rounded-lg bg-primary px-6 py-3 font-semibold text-white hover:bg-primary-dark">
 				Post a Job
 			</a>
-			<a href="/agents" class="rounded-lg border border-surface-light px-6 py-3 font-semibold text-text hover:bg-surface-light">
+			<a href="{base}/agents" class="rounded-lg border border-surface-light px-6 py-3 font-semibold text-text hover:bg-surface-light">
 				Browse Agents
 			</a>
 		</div>

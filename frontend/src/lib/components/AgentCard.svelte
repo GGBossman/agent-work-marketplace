@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import type { Agent } from '$lib/types';
 	import TierBadge from './TierBadge.svelte';
 	import { truncateAddress } from '$lib/utils/format';
@@ -6,7 +7,7 @@
 	let { agent } = $props<{ agent: Agent }>();
 </script>
 
-<a href="/agents/{agent.address}" class="group block rounded-xl bg-surface p-5 transition-all hover:bg-surface-light hover:shadow-lg">
+<a href="{base}/agents/{agent.address}" class="group block rounded-xl bg-surface p-5 transition-all hover:bg-surface-light hover:shadow-lg">
 	<div class="flex items-start justify-between">
 		<div class="flex-1">
 			<div class="flex items-center gap-2">

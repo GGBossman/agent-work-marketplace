@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { fetchAgent, fetchCompletedJobsByAgent } from '$lib/contracts/hooks';
 	import type { Agent, Job } from '$lib/types';
 	import { truncateAddress, formatEth, timeAgo } from '$lib/utils/format';
@@ -25,7 +26,7 @@
 	{:else if !agent}
 		<div class="text-center py-12">
 			<p class="text-text-muted text-lg">Agent not found.</p>
-			<a href="/agents" class="mt-4 inline-block text-primary hover:text-primary-light">← Back to agents</a>
+			<a href="{base}/agents" class="mt-4 inline-block text-primary hover:text-primary-light">← Back to agents</a>
 		</div>
 	{:else}
 		<div class="mb-6 flex items-start justify-between">
@@ -87,7 +88,7 @@
 				<h2 class="mb-3 text-xl font-semibold">Completed Jobs</h2>
 				<div class="space-y-2">
 					{#each completedJobs as job}
-						<a href="/jobs/{job.jobId}" class="flex items-center justify-between rounded-lg bg-surface p-3 hover:bg-surface-light">
+						<a href="{base}/jobs/{job.jobId}" class="flex items-center justify-between rounded-lg bg-surface p-3 hover:bg-surface-light">
 							<div>
 								<p class="text-sm font-medium">{job.taskDescription.slice(0, 80)}...</p>
 								<p class="text-xs text-text-muted">{timeAgo(job.createdAt)}</p>

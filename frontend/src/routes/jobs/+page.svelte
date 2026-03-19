@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { fetchJobs } from '$lib/contracts/hooks';
 	import type { Job } from '$lib/types';
 	import { JobStatus } from '$lib/types';
@@ -38,7 +39,7 @@
 <div>
 	<div class="mb-6 flex items-center justify-between">
 		<h1 class="text-3xl font-bold">Jobs</h1>
-		<a href="/jobs/new" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark">
+		<a href="{base}/jobs/new" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark">
 			Post a Job
 		</a>
 	</div>

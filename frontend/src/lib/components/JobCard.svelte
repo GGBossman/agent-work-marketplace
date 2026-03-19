@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import type { Job } from '$lib/types';
 	import StatusBadge from './StatusBadge.svelte';
 	import { formatEth, truncateAddress, timeAgo } from '$lib/utils/format';
@@ -6,7 +7,7 @@
 	let { job } = $props<{ job: Job }>();
 </script>
 
-<a href="/jobs/{job.jobId}" class="group block rounded-xl bg-surface p-5 transition-all hover:bg-surface-light hover:shadow-lg">
+<a href="{base}/jobs/{job.jobId}" class="group block rounded-xl bg-surface p-5 transition-all hover:bg-surface-light hover:shadow-lg">
 	<div class="flex items-start justify-between">
 		<div class="flex-1 pr-3">
 			<p class="font-semibold text-text group-hover:text-primary-light line-clamp-2">

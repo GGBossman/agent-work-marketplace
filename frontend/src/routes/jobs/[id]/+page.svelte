@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { fetchJob, fetchAgents, confirmDelivery, cancelJob, submitDeliverable, acceptJob, fileDispute, assignAgent } from '$lib/contracts/hooks';
 	import type { Job, Agent } from '$lib/types';
 	import { JobStatus } from '$lib/types';
@@ -94,7 +95,7 @@
 	{:else if !job}
 		<div class="text-center py-12">
 			<p class="text-text-muted text-lg">Job not found.</p>
-			<a href="/jobs" class="mt-4 inline-block text-primary hover:text-primary-light">← Back to jobs</a>
+			<a href="{base}/jobs" class="mt-4 inline-block text-primary hover:text-primary-light">← Back to jobs</a>
 		</div>
 	{:else}
 		<div class="mb-6">

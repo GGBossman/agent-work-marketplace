@@ -3,6 +3,7 @@
 	import { walletState } from '$lib/stores/wallet.svelte';
 	import { parseEther } from 'viem';
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 
 	let description = $state('');
 	let budget = $state('');
@@ -45,9 +46,9 @@
 			const value = parseEther(budget);
 			const result = await createJob(description, deadlineTimestamp, value);
 			if (result.success && result.jobId) {
-				goto(`/jobs/${result.jobId}`);
+				goto(`${base}/jobs/${result.jobId}`);
 			} else if (result.success) {
-				goto('/jobs');
+				goto(`${base}/jobs`);
 			}
 		} catch (err: any) {
 			error = err?.message ?? 'Failed to create job';

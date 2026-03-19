@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { walletState } from '$lib/stores/wallet.svelte';
 	import { fetchJobs, fetchAgent, registerAgent, updateAvailability } from '$lib/contracts/hooks';
 	import type { Job, Agent } from '$lib/types';
@@ -168,7 +169,7 @@
 					</div>
 				{/if}
 				{#if buyerJobs.length === 0}
-					<p class="text-text-muted">No jobs posted yet. <a href="/jobs/new" class="text-primary hover:underline">Post your first job</a></p>
+					<p class="text-text-muted">No jobs posted yet. <a href="{base}/jobs/new" class="text-primary hover:underline">Post your first job</a></p>
 				{:else}
 					<div class="grid grid-cols-1 gap-3 md:grid-cols-2">
 						{#each buyerJobs as job (job.jobId)}
