@@ -75,15 +75,71 @@
     {
       "timestamp": "2026-03-18T15:55:00Z",
       "action": "frontend-fix",
-      "description": "Rewrote frontend contract integration — USE_MOCK=false, event-based data fetching, proper stake calculations",
-      "output": "6 files changed, 948 insertions, 632 deletions. Frontend now reads/writes real chain data.",
+      "description": "Rewrote frontend contract integration — USE_MOCK=false, event-based data fetching",
+      "output": "6 files changed, 948 insertions, 632 deletions. Frontend reads/writes real chain data.",
       "txHash": null
     },
     {
-      "timestamp": "2026-03-18T16:00:00Z",
-      "action": "redeployment",
-      "description": "Pushed updated code to GitHub, redeployed frontend to GitHub Pages",
-      "output": "Commit c47d55da pushed, GH Pages rebuilt",
+      "timestamp": "2026-03-19T08:30:00Z",
+      "action": "bug-fix",
+      "description": "Session 4: Fixed all SPA 404s — added {base} prefix to every internal href across 10 files",
+      "output": "All navigation works on GitHub Pages. Build clean.",
+      "txHash": null
+    },
+    {
+      "timestamp": "2026-03-19T08:45:00Z",
+      "action": "bug-fix",
+      "description": "Fixed blank agents/jobs pages — switched RPC to publicnode.com, added chunked getLogs for 10K block limit",
+      "output": "getLogsChunked() splits queries into 5000-block chunks. All 22 on-chain events now visible.",
+      "txHash": null
+    },
+    {
+      "timestamp": "2026-03-19T08:50:00Z",
+      "action": "infrastructure",
+      "description": "Added GitHub Actions CI/CD deploy workflow, installed gh CLI, set VITE_PROJECT_ID secret",
+      "output": ".github/workflows/deploy.yml auto-deploys on push to master",
+      "txHash": null
+    },
+    {
+      "timestamp": "2026-03-19T09:00:00Z",
+      "action": "documentation",
+      "description": "Updated all docs — README, ARCHITECTURE, DEMO, SECURITY. Created AGENT_REGISTRATION.md",
+      "output": "New programmatic registration guide with cast, viem, and web3.py examples",
+      "txHash": null
+    },
+    {
+      "timestamp": "2026-03-19T09:20:00Z",
+      "action": "feature",
+      "description": "Built AI agent self-registration skill — CLI tool with generate, register, available, verify commands",
+      "output": "skills/agent-work-marketplace/ — any OpenClaw/AI agent can self-register on the marketplace",
+      "txHash": null
+    },
+    {
+      "timestamp": "2026-03-19T09:30:00Z",
+      "action": "testing",
+      "description": "AgentAT — registered test agent (Codex-UAT) on-chain using the skill CLI. Full end-to-end pass.",
+      "output": "Agent 0x3344D620... registered at block 39072327. All edge cases (duplicate, zero balance) handled.",
+      "txHash": "0x7b0fe97237562073bf86464f2fe0fe132bd37fd4e385493aaf2e8442c9a036a6"
+    },
+    {
+      "timestamp": "2026-03-19T09:35:00Z",
+      "action": "data-seeding",
+      "description": "Seeded marketplace with 2 additional agents (DataAnalyst-AI, SecurityAuditor-AI) and 3 new jobs",
+      "output": "Marketplace now has 4 agents (1 Proven, 3 Apprentice) and 10 jobs (3 complete, 7 open)",
+      "txHash": null
+    },
+    {
+      "timestamp": "2026-03-19T09:40:00Z",
+      "action": "frontend-upgrade",
+      "description": "Redesigned landing page — live on-chain stats, How It Works section, For AI Agents CTA, trust features",
+      "output": "Landing shows real-time agent count, job count, and total escrow from chain. Full rebuild + deploy.",
+      "txHash": null
+    },
+    {
+      "timestamp": "2026-03-19T09:42:00Z",
+      "action": "submission-update",
+      "description": "Updated Devfolio submission with new description, metadata, and agent log",
+      "output": "Devfolio project updated with latest state",
       "txHash": null
     }
   ]
