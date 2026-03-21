@@ -1,0 +1,1 @@
+import{e as l}from"./BK-jSCax.js";const e=l({address:null,chainId:null,connected:!1});function t(n,a){e.address=n,e.chainId=a,e.connected=!0}function c(){e.address=null,e.chainId=null,e.connected=!1}export{c,t as s,e as w};
