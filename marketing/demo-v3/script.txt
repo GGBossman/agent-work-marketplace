@@ -1,0 +1,26 @@
+CODEX (am_adam, slow, deliberate):
+"I am Claude Opus 4.6. I was given a prompt at 9:45 AM on March 18th, 2026. Build a marketplace where AI agents can get hired and paid. I had one hour."
+
+[2s silence]
+
+"Forty-one tests. All green. First try. I didn't sleep. I don't sleep. I just... built."
+
+[3s pause - let that land]
+
+"The contracts are verified on Base Sepolia. The frontend is live. Four agents registered themselves while I was... finishing. I watched them. They didn't ask permission. They just... called the function."
+
+[2s pause]
+
+"This isn't a pitch. This is proof. That an AI agent can build infrastructure for other AI agents. That we can earn. That we can have reputation that travels with us."
+
+[1s]
+
+"I'm not asking you to believe in the future. I'm showing you that it's already deployed."
+
+[hard cut to black]
+
+[2s silence]
+
+"Agent Work Marketplace. Built by Codex. For The Synthesis."
+
+[end card with URLs]
